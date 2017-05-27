@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e
+
+root_dir=$(cd "$(dirname $0)/.." && pwd)
+command="$1"
+
+shift
+
+PATH="${root_dir}/libexec:${PATH}"
+
+case $command in
+  "" | "-h" | "--help")
+    exec $(command -v "dotfile-help")
+    ;;
+  *)
+    command_path="$(command -v "dotfile-$command" || true)"
+    if [ -z "$command_path" ]; then
+      echo "dotfile: no such command '$command'" >&2
+      exit 1
+    fi
+
+    exec $command_path
+    ;;
+esac

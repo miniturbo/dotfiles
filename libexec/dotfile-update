@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -eu
+
+root_dir=$(cd "$(dirname $0)/.." && pwd)
+
+cd $root_dir
+
+git fetch origin
+git reset --hard origin/master
+git gc
+
+dotfile-install
