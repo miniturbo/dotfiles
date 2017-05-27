@@ -1,0 +1,2 @@
+dotfile '.gitconfig'
+dotfile '.gitignore'
