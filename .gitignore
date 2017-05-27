@@ -1,3 +1,5 @@
 /config/.tmux/plugins
+/config/.vim/dein
+/config/.vim/info
 /config/.zsh/history
 /config/.zsh/zplug
