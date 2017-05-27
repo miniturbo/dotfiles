@@ -20,13 +20,9 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 # zplug
 export ZPLUG_HOME="$HOME/.zsh/zplug"
 
-# dot
-export DOT_REPO="git@github.com:miniturbo/dotfiles.git"
-export DOT_DIR="$HOME/.dotfiles"
-
-# direnv
-if type direnv > /dev/null 2>&1; then
-  eval "$(direnv hook zsh)"
+# dotfiles
+if [ -d $HOME/.dotfiles ]; then
+  path=($HOME/.dotfiles/bin(N-/) $path)
 fi
 
 # anyenv
@@ -39,4 +35,9 @@ fi
 if type goenv > /dev/null 2>&1; then
   export GOPATH="$HOME/.go"
   path=($GOPATH/bin(N-/) $path)
+fi
+
+# direnv
+if type direnv > /dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
 fi
