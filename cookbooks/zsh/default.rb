@@ -18,6 +18,7 @@ file '/etc/shells' do
   block do |content|
     content << "/usr/local/bin/zsh\n"
   end
+  user 'root'
 end
 
 execute 'change shell to zsh' do
