@@ -3,13 +3,14 @@
 set -eu
 
 dotfile_dir="${HOME}/.dotfiles"
+branch=${1:-master}
 
 if [ -d $dotfile_dir ]; then
   echo "dotfiles have been already installed to '${dotfile_dir}'."
   exit 0
 fi
 
-git clone -q git@github.com:miniturbo/dotfiles.git $dotfile_dir
+git clone -q -b $branch git@github.com:miniturbo/dotfiles.git $dotfile_dir
 
 PATH="${dotfile_dir}/bin:${PATH}"
 

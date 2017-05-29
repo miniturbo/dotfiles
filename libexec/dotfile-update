@@ -3,11 +3,12 @@
 set -eu
 
 root_dir=$(cd "$(dirname $0)/.." && pwd)
+branch=$(git symbolic-ref --short HEAD)
 
 cd $root_dir
 
 git fetch origin
-git reset --hard origin/master
+git reset --hard "origin/${branch}"
 git gc
 
 dotfile-install
