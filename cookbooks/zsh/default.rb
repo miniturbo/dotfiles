@@ -12,3 +12,15 @@ execute 'install zplug' do
   command "curl -sL --proto-redir -all,https #{url} | ZPLUG_HOME=#{home} zsh"
   not_if "test -d #{home}"
 end
+
+file '/etc/shells' do
+  action :edit
+  block do |content|
+    content << "/usr/local/bin/zsh\n"
+  end
+end
+
+execute 'change shell to zsh' do
+  command 'chsh -s /usr/local/bin/zsh'
+  not_if 'echo $0 | grep zsh'
+end
