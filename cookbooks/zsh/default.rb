@@ -13,15 +13,11 @@ execute 'install zplug' do
   not_if "test -d #{home}"
 end
 
-file '/etc/shells' do
-  action :edit
-  block do |content|
-    content << "/usr/local/bin/zsh\n"
-  end
-  user 'root'
-end
-
 execute 'change shell to zsh' do
-  command 'chsh -s /usr/local/bin/zsh'
-  not_if 'echo $0 | grep zsh'
+  path = '/usr/local/bin/zsh'
+  command <<-EOF
+    echo #{path} | sudo tee -a /etc/shells
+    chsh -s #{path}
+  EOF
+  not_if "cat /etc/shells | grep #{path}"
 end
