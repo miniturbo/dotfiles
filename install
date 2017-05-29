@@ -10,6 +10,13 @@ if [ -d $dotfile_dir ]; then
   exit 0
 fi
 
+if ! xcode-select -p > /dev/null 2>&1; then
+  touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+  name=$(softwareupdate -l | grep '\*.*Command Line' | head -n 1 | awk -F '*' '{print $2}' | sed -e 's/^ *//' | tr -d '\n')
+  softwareupdate -i "$name" --verbose;
+  rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+fi
+
 git clone -q -b $branch git@github.com:miniturbo/dotfiles.git $dotfile_dir
 
 PATH="${dotfile_dir}/bin:${PATH}"
