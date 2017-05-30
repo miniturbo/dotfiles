@@ -12,10 +12,7 @@ path=(
   /sbin(N-/)
 )
 
-export EDITOR="vi"
-
-# Homebrew-Cask
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+export EDITOR="vim"
 
 # zplug
 export ZPLUG_HOME="$HOME/.zsh/zplug"
