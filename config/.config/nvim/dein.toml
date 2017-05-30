@@ -4,14 +4,25 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'haya14busa/dein-command.vim'
 
-#[[plugins]]
-#repo = 'edkolev/tmuxline.vim'
-
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+hook_add = 'call marble#lightline#init()'
+
+#[[plugins]]
+#repo = 'edkolev/tmuxline.vim'
+#hook_add = '''
+#  let g:tmuxline_theme  = 'lightline'
+#  let g:tmuxline_preset = 'marble'
+#'''
 
 [[plugins]]
 repo = 'w0ng/vim-hybrid'
+hook_add = '''
+  set background=dark
+  let g:hybrid_custom_term_colors = 1
+  "let g:hybrid_reduced_contrast   = 1
+  colorscheme hybrid
+'''
 
 [[plugins]]
 repo = 'cocopon/lightline-hybrid.vim'
