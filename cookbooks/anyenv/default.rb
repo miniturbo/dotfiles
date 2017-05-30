@@ -20,8 +20,10 @@ end
   rbenv
 ).each do |env|
   execute "install #{env}" do
-    path = "#{ANYENV_ROOT}/bin:$PATH"
-    command %Q|PATH=#{path} anyenv install #{env}|
-    not_if %Q!PATH=#{path} anyenv version | grep #{env}!
+    command <<-EOF
+      #{ANYENV_ROOT}/bin/anyenv init -
+      #{ANYENV_ROOT}/bin/anyenv install #{env}
+    EOF
+    not_if %Q!test -d #{ANYENV_ROOT}/envs/#{env}!
   end
 end
