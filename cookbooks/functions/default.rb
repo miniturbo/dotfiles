@@ -5,3 +5,10 @@ define :dotfile, source: nil do
     user node[:user]
   end
 end
+
+define :cask do
+  execute "install #{params[:name]}" do
+    command "brew cask install #{params[:name]}"
+    not_if "ls -1 /usr/local/Caskroom/#{params[:name]}"
+  end
+end

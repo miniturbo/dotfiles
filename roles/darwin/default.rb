@@ -5,6 +5,7 @@ node.reverse_merge!(user: ENV['SUDO_USER'] || ENV['USER'])
 include_cookbook 'functions'
 include_cookbook 'homebrew'
 include_cookbook 'xcode'
+include_cookbook 'iterm2'
 include_cookbook 'zsh'
 include_cookbook 'tmux'
 include_cookbook 'vim'
