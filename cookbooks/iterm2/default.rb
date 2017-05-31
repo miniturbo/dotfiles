@@ -1,3 +1,6 @@
 cask 'iterm2'
 
-remote_file "#{ENV['HOME']}/Library/Preferences/com.googlecode.iterm2.plist"
+file = "#{ENV['HOME']}/Library/Preferences/com.googlecode.iterm2.plist"
+remote_file file do
+  not_if "test -f #{file}"
+end
