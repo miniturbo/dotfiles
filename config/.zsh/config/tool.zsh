@@ -6,7 +6,7 @@ fi
 # anyenv
 if [[ -d $HOME/.anyenv ]]; then
   path=($HOME/.anyenv/bin(N-/) $path)
-  eval "$(anyenv init -)"
+  eval "$(anyenv init - --no-rehash)"
 fi
 
 # direnv
