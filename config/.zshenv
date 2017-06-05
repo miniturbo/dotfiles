@@ -9,5 +9,3 @@ path=(
   /usr/sbin(N-/)
   /sbin(N-/)
 )
-
-export EDITOR="vim"
