@@ -1,3 +1,9 @@
+node.reverse_merge!(
+  zsh: {
+    path: node[:platform] == 'darwin' ? '/usr/local/bin/zsh' : '/usr/bin/zsh'
+  }
+)
+
 package 'zsh' do
   if node[:platform] == 'darwin'
     options '--without-etcdir'
@@ -17,16 +23,12 @@ execute 'install zplug' do
   not_if "test -d #{home}"
 end
 
-ZSH_PATH = node[:platform] == 'darwin' ? '/usr/local/bin/zsh' : '/usr/bin/zsh'
-
 execute 'append zsh path to /etc/shells' do
-  path = ZSH_PATH
-  command "echo #{path} | sudo tee -a /etc/shells"
-  not_if "cat /etc/shells | grep #{path}"
+  command "echo #{node[:zsh][:path]} | sudo tee -a /etc/shells"
+  not_if "cat /etc/shells | grep #{node[:zsh][:path]}"
 end
 
 execute 'change shell to zsh' do
-  path = ZSH_PATH
-  command "chsh -s #{path} #{node[:user]}"
-  not_if %Q|[ "$SHELL" = "#{path}" ]|
+  command "chsh -s #{node[:zsh][:path]} #{node[:user]}"
+  not_if %Q|[ "$SHELL" = "#{node[:zsh][:path]}" ]|
 end
