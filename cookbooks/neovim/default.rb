@@ -1,4 +1,19 @@
-package 'neovim/neovim/neovim'
+if node[:platform] == 'darwin'
+  package 'neovim/neovim/neovim'
+else
+  execute 'add apt repository' do
+    command <<-EOF
+      add-apt-repository ppa:neovim-ppa/stable
+      apt update
+    EOF
+    not_if 'apt-cache policy | grep neovim'
+    user 'root'
+  end
+
+  package 'neovim' do
+    user 'root'
+  end
+end
 
 directory "#{ENV['HOME']}/.config"
 
