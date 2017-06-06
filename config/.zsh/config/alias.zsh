@@ -1,31 +1,33 @@
-alias cp="nocorrect cp -i"
-alias git="nocorrect git"
-alias heroku="nocorrect heroku"
-alias l.="ls -d .*"
-alias less="less -R"
 alias ll="ls -lh"
-alias mv="nocorrect mv -i"
+alias mv="mv -i"
+alias cp="cp -i"
 alias rm="rm -i"
+alias vi="vim"
+alias less="less -R"
 alias tailf="tail -f"
-alias vi="nocorrect vim"
 
-# color ls
+# ls
 case $(uname) in
   Darwin) alias ls="ls -FG" ;;
-  *)      alias ls="ls --color=auto -F" ;;
+  *)      alias ls="ls -F --color=auto --group-directories-first" ;;
 esac
 
-# colordiff
-if type colordiff > /dev/null 2>&1; then
-  alias diff='colordiff'
+# gls
+if type gls > /dev/null; then
+  alias ls="gls -F --color=auto --group-directories-first"
 fi
 
-# Homebrew
-alias brew="env PATH=${PATH/${HOME}\/\.anyenv\/envs\/*env\/shims:/} brew"
+# colordiff
+if type colordiff > /dev/null; then
+  alias diff="colordiff"
+fi
 
-# Ruby
-alias be="nocorrect bundle exec --"
-alias serve="ruby -run -e httpd -- --bind-address=0.0.0.0 --port=3000 ."
+# bundler
+if type bundle > /dev/null; then
+  alias be="bundle exec --"
+fi
 
-# Perl
-alias ce="nocorrect carton exec --"
+# homebrew
+if type brew > /dev/null; then
+  alias brew="env PATH=${PATH/${HOME}\/\.anyenv\/envs\/*env\/shims:/} brew"
+fi
