@@ -1,1 +1,1 @@
-autocmd marble BufRead,BufNewFile .envrc setfiletype sh
+autocmd BufRead,BufNewFile .envrc setfiletype sh

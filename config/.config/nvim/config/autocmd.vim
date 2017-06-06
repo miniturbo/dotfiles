@@ -8,8 +8,8 @@ augroup marble
     \ endif
 
   " 自動コメントを無効にする
-  "autocmd FileType * setlocal formatoptions-=ro
+  autocmd FileType * setlocal formatoptions-=ro
 
-  " インサートモードを抜ける
-  "autocmd InsertLeave * set nopaste
+  " 挿入モードから離れる際にペースモードを解除する
+  autocmd InsertLeave * set nopaste
 augroup END
