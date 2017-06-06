@@ -3,7 +3,7 @@
 ## Installation
 
 ```
-$ curl -fsSL https://raw.githubusercontent.com/miniturbo/dotfiles/master/install | sh
+% curl -fsSL https://raw.githubusercontent.com/miniturbo/dotfiles/master/install | sh
 ```
 
 ## Usage
