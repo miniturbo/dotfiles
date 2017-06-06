@@ -5,11 +5,7 @@ node.reverse_merge!(
 )
 
 package 'zsh' do
-  if node[:platform] == 'darwin'
-    options '--without-etcdir'
-  else
-    user 'root'
-  end
+  options '--without-etcdir' if node[:platform] == 'darwin'
 end
 
 dotfile '.zshenv'
@@ -20,6 +16,7 @@ execute 'install zplug' do
   home = '$HOME/.zsh/zplug'
   url = 'https://raw.githubusercontent.com/zplug/installer/master/installer.zsh'
   command "curl -sL --proto-redir -all,https #{url} | ZPLUG_HOME=#{home} zsh"
+  user node[:user]
   not_if "test -d #{home}"
 end
 
@@ -29,6 +26,6 @@ execute 'append zsh path to /etc/shells' do
 end
 
 execute 'change shell to zsh' do
-  command "chsh -s #{node[:zsh][:path]} #{node[:user]}"
+  command "sudo chsh -s #{node[:zsh][:path]} #{node[:user]}"
   not_if %Q|[ "$SHELL" = "#{node[:zsh][:path]}" ]|
 end

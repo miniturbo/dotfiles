@@ -1,24 +1,23 @@
-
-if node[:platform] == 'darwin'
-  %w(libffi libyaml openssl).each { |name| package name }
-else
-  %w(
-    autoconf
-    bison
-    build-essential
-    libffi-dev
-    libgdbm-dev
-    libgdbm3
-    libncurses5-dev
-    libreadline6-dev
-    libssl-dev
-    libyaml-dev
-    zlib1g-dev
-  ).each do |name|
-    package name do
-      user 'root'
-    end
+packages =
+  case node[:platform]
+  when 'darwin'
+    %w(libffi libyaml openssl)
+  else
+    %w(
+      autoconf
+      bison
+      build-essential
+      libffi-dev
+      libgdbm-dev
+      libgdbm3
+      libncurses5-dev
+      libreadline6-dev
+      libssl-dev
+      libyaml-dev
+      zlib1g-dev
+    )
   end
-end
+
+packages.each { |name| package name }
 
 dotfile '.gemrc'

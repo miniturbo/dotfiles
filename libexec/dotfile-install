@@ -3,18 +3,15 @@
 set -eu
 
 root_dir=$(cd "$(dirname $0)/.." && pwd)
+platform=$(uname | tr '[A-Z]' '[a-z]')
 
 mitamae_version="1.4.5"
 mitamae_cache="mitamae-${mitamae_version}"
 
 if [ ! -f "${root_dir}/bin/${mitamae_cache}" ]; then
-  case "$(uname)" in
-    "Darwin")
-      mitamae_bin="mitamae-x86_64-darwin"
-      ;;
-    "Linux")
-      mitamae_bin="mitamae-x86_64-linux"
-      ;;
+  case $platform in
+    "darwin") mitamae_bin="mitamae-x86_64-darwin" ;;
+    "linux")  mitamae_bin="mitamae-x86_64-linux"  ;;
   esac
 
   echo "Downloading mitamae ${mitamae_version}..."
@@ -24,4 +21,7 @@ fi
 
 ln -snf $mitamae_cache "${root_dir}/bin/mitamae"
 
-${root_dir}/bin/mitamae local "${root_dir}/roles/$(uname | tr '[A-Z]' '[a-z]')/default.rb"
+case $platform in
+  "darwin")  ${root_dir}/bin/mitamae local "${root_dir}/roles/$platform/default.rb" ;;
+  *) sudo -E ${root_dir}/bin/mitamae local "${root_dir}/roles/$platform/default.rb" ;;
+esac

@@ -1,6 +1,4 @@
-package 'tmux' do
-  user 'root' unless node[:platform] == 'darwin'
-end
+package 'tmux'
 
 if node[:platform] == 'darwin'
   package 'reattach-to-user-namespace' do
@@ -13,4 +11,5 @@ dotfile '.tmux'
 
 git "#{ENV['HOME']}/.tmux/plugins/tpm" do
   repository 'https://github.com/tmux-plugins/tpm'
+  user node[:user]
 end
