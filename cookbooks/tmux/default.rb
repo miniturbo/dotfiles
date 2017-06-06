@@ -1,6 +1,9 @@
 package 'tmux'
-package 'reattach-to-user-namespace' do
-  options '--with-wrap-launchctl --with-wrap-pbcopy-and-pbpaste'
+
+if node[:platform] == 'darwin'
+  package 'reattach-to-user-namespace' do
+    options '--with-wrap-launchctl --with-wrap-pbcopy-and-pbpaste'
+  end
 end
 
 dotfile '.tmux.conf'
