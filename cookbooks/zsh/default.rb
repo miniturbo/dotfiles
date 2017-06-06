@@ -1,5 +1,5 @@
 package 'zsh' do
-  options '--without-etcdir'
+  options '--without-etcdir' if node[:platform] == 'darwin'
 end
 
 dotfile '.zshenv'
@@ -13,11 +13,16 @@ execute 'install zplug' do
   not_if "test -d #{home}"
 end
 
-execute 'change shell to zsh' do
-  path = '/usr/local/bin/zsh'
-  command <<-EOF
-    echo #{path} | sudo tee -a /etc/shells
-    chsh -s #{path}
-  EOF
+ZSH_PATH = node[:platform] == 'darwin' ? '/usr/local/bin/zsh' : '/usr/bin/zsh'
+
+execute 'append zsh path to /etc/shells' do
+  path = ZSH_PATH
+  command "echo #{path} | sudo tee -a /etc/shells"
   not_if "cat /etc/shells | grep #{path}"
+end
+
+execute 'change shell to zsh' do
+  path = ZSH_PATH
+  command "chsh -s #{path} #{node[:user]}"
+  not_if %Q|[ "$SHELL" = "#{path}" ]|
 end
