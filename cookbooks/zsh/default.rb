@@ -1,5 +1,9 @@
 package 'zsh' do
-  options '--without-etcdir' if node[:platform] == 'darwin'
+  if node[:platform] == 'darwin'
+    options '--without-etcdir'
+  else
+    user 'root'
+  end
 end
 
 dotfile '.zshenv'

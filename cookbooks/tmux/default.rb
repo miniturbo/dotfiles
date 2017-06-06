@@ -1,4 +1,6 @@
-package 'tmux'
+package 'tmux' do
+  user 'root' unless node[:platform] == 'darwin'
+end
 
 if node[:platform] == 'darwin'
   package 'reattach-to-user-namespace' do
