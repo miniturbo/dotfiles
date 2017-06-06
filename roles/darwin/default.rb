@@ -2,7 +2,7 @@ include_recipe '../../helpers/recipe_helper'
 
 node.reverse_merge!(user: ENV['SUDO_USER'] || ENV['USER'])
 
-include_cookbook 'functions'
+include_role 'base'
 include_cookbook 'homebrew'
 include_cookbook 'xcode'
 include_cookbook 'iterm2'

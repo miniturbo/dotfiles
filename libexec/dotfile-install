@@ -8,11 +8,20 @@ mitamae_version="1.4.5"
 mitamae_cache="mitamae-${mitamae_version}"
 
 if [ ! -f "${root_dir}/bin/${mitamae_cache}" ]; then
+  case "$(uname)" in
+    "Darwin")
+      mitamae_bin="mitamae-x86_64-darwin"
+      ;;
+    "Linux")
+      mitamae_bin="mitamae-x86_64-linux"
+      ;;
+  esac
+
   echo "Downloading mitamae ${mitamae_version}..."
-  curl -o "${root_dir}/bin/${mitamae_cache}" -fsSL "https://github.com/itamae-kitchen/mitamae/releases/download/v${mitamae_version}/mitamae-x86_64-darwin"
+  curl -o "${root_dir}/bin/${mitamae_cache}" -fsSL "https://github.com/itamae-kitchen/mitamae/releases/download/v${mitamae_version}/${mitamae_bin}"
   chmod +x "${root_dir}/bin/${mitamae_cache}"
 fi
 
 ln -snf $mitamae_cache "${root_dir}/bin/mitamae"
 
-${root_dir}/bin/mitamae local ${root_dir}/roles/darwin/default.rb
+${root_dir}/bin/mitamae local "${root_dir}/roles/$(uname | tr '[A-Z]' '[a-z]')/default.rb"

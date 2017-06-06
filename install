@@ -10,7 +10,7 @@ if [ -d $dotfile_dir ]; then
   exit 0
 fi
 
-if ! xcode-select -p > /dev/null 2>&1; then
+if [ "$(uname)" = "Darwin" ] && ! xcode-select -p > /dev/null 2>&1; then
   touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
   name=$(softwareupdate -l | grep '\*.*Command Line' | head -n 1 | awk -F '*' '{print $2}' | sed -e 's/^ *//' | tr -d '\n')
   softwareupdate -i "$name" --verbose;
