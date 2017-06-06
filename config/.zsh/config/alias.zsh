@@ -17,6 +17,11 @@ if type gls > /dev/null; then
   alias ls="gls -F --color=auto --group-directories-first"
 fi
 
+# neovim
+if type nvim > /dev/null; then
+  alias vim="nvim"
+fi
+
 # colordiff
 if type colordiff > /dev/null; then
   alias diff="colordiff"
