@@ -7,4 +7,4 @@ source $HOME/.zsh/config/anyenv.zsh
 source $HOME/.zsh/config/tool.zsh
 source $HOME/.zsh/config/other.zsh
 
-type zprof > /dev/null && zprof | less
+[[ "$ZPROF" = 1 ]] && zprof | less

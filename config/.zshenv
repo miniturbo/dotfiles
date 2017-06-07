@@ -1,4 +1,4 @@
-#zmodload zsh/zprof && zprof
+[[ "$ZPROF" = 1 ]] && zmodload zsh/zprof && zprof
 
 typeset -U path
 
