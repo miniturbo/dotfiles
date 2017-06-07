@@ -1,3 +1,5 @@
+#zmodload zsh/zprof && zprof
+
 typeset -U path
 
 path=(
