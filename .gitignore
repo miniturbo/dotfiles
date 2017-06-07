@@ -1,4 +1,5 @@
 /bin/mitamae*
 /config/.tmux/plugins
 /config/.zsh/history
+/config/.zsh/plugins.zsh
 /config/.zsh/zplug

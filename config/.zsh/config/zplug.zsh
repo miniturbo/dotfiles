@@ -1,4 +1,8 @@
 export ZPLUG_HOME=$HOME/.zsh/zplug
+export ZPLUG_LOADFILE=$HOME/.zsh/plugins.zsh
+
+[[ -f $ZPLUG_LOADFILE ]] || touch $ZPLUG_LOADFILE
+
 source $ZPLUG_HOME/init.zsh
 
 # functions
