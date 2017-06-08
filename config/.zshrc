@@ -8,4 +8,6 @@ loadlib $ZSH_ROOT/config/keybind.zsh
 loadlib $ZSH_ROOT/config/anyenv.zsh
 loadlib $ZSH_ROOT/config/tool.zsh
 
-[[ "$ZPROF" = 1 ]] && zprof | less
+if type zprof > /dev/null; then
+  zprof | less
+fi
