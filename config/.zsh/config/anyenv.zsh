@@ -11,3 +11,5 @@ if ! diff $HOME/.cache/anyenv/envs <($ANYENV_ROOT/libexec/anyenv-envs) > /dev/nu
 fi
 
 source $HOME/.cache/anyenv/init
+
+type bundle > /dev/null && alias be="bundle exec --"

@@ -27,11 +27,6 @@ if type colordiff > /dev/null; then
   alias diff="colordiff"
 fi
 
-# bundler
-if type bundle > /dev/null; then
-  alias be="bundle exec --"
-fi
-
 # homebrew
 if type brew > /dev/null; then
   alias brew="env PATH=${PATH/${HOME}\/\.anyenv\/envs\/*env\/shims:/} brew"
