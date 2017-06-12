@@ -4,7 +4,7 @@ when 'darwin'
 else
   execute 'add apt repository' do
     command <<-EOF
-      add-apt-repository -y ppa:neovim-ppa/stable
+      add-apt-repository -y ppa:neovim-ppa/unstable
       apt update -y
     EOF
     not_if 'apt-cache policy | grep neovim'
