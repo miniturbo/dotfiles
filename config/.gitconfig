@@ -4,6 +4,8 @@
   quotepath = false
 [fetch]
   prune = true
+[pull]
+  rebase = true
 [push]
   default = simple
 [color]
