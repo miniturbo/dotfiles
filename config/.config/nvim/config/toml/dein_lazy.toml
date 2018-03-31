@@ -1,7 +1,23 @@
 [[plugins]]
+repo = 'hail2u/vim-css3-syntax'
+on_ft = ['css', 'scss', 'vue']
+
+[[plugins]]
+repo = 'cakebaker/scss-syntax.vim'
+on_ft = ['scss', 'vue']
+
+[[plugins]]
 repo = 'othree/yajs.vim'
-on_ft = 'javascript'
+on_ft = ['javascript', 'vue']
 
 [[plugins]]
 repo = 'othree/es.next.syntax.vim'
-on_ft = 'javascript'
+on_ft = ['javascript', 'vue']
+
+[[plugins]]
+repo = 'posva/vim-vue'
+on_ft = 'vue'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
