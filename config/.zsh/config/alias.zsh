@@ -17,6 +17,11 @@ if type gls > /dev/null; then
   alias ls="gls -F --color=auto --group-directories-first"
 fi
 
+# tmux + direnv
+if type tmux > /dev/null && type direnv > /dev/null; then
+  alias tmux="direnv exec / tmux"
+fi
+
 # neovim
 if type nvim > /dev/null; then
   alias vim="nvim"
