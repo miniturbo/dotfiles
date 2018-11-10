@@ -17,7 +17,7 @@ ANYENV_ROOT = "#{ENV['HOME']}/.anyenv"
 end
 
 %w(
-  ndenv
+  nodenv
   rbenv
 ).each do |env|
   execute "install #{env}" do
