@@ -1,20 +1,17 @@
 ANYENV_ROOT = "#{ENV['HOME']}/.anyenv"
 
-git ANYENV_ROOT do
-  repository 'https://github.com/riywo/anyenv.git'
-  user node[:user]
-end
-
-directory "#{ANYENV_ROOT}/plugins" do
-  user node[:user]
-end
-
 [
-  { name: 'anyenv-update', repository: 'https://github.com/znz/anyenv-update.git' },
-  { name: 'anyenv-git',    repository: 'https://github.com/znz/anyenv-git.git' }
-].each do |plugin|
-  git "#{ANYENV_ROOT}/plugins/#{plugin[:name]}" do
-    repository plugin[:repository]
+  {
+    path: ANYENV_ROOT,
+    repository: 'https://github.com/riywo/anyenv.git'
+  },
+  {
+    path: "#{ANYENV_ROOT}/plugins/anyenv-update",
+    repository: 'https://github.com/znz/anyenv-update.git'
+  }
+].each do |g|
+  git_pull g[:path] do
+    repository g[:repository]
     user node[:user]
   end
 end
