@@ -17,5 +17,5 @@ function _tmux_generate_session_name
     set name "$name|"(math $n + 1)
   end
 
-  echo $name
+  echo (string replace '.' '_' $name)
 end
