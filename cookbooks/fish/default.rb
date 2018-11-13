@@ -3,7 +3,6 @@ PATH = '/usr/local/bin/fish'
 package 'fish'
 
 dotfile '.config/fish/conf.d'
-dotfile '.config/fish/config.fish'
 dotfile '.config/fish/fishfile'
 dotfile '.config/fish/functions'
 
