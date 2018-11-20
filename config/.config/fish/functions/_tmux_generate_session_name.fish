@@ -8,7 +8,7 @@ function _tmux_generate_session_name
   end
 
   # fix duplicated name
-  set -l dups (tmux list-sessions -F '#{session_name}' | string match -r "$name(?:\|\d+)?")
+  set -l dups (tmux list-sessions -F '#{session_name}' | string match -r "^$name(?:\|\d+)?\$")
   if test (count $dups) -gt 0
     set -l n 0
     if test (count $dups) -gt 1
