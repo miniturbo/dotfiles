@@ -31,6 +31,6 @@
   tr    = log --date=short --graph --abbrev-commit \
           --pretty='format:%C(yellow)%h %C(green)%cd %C(blue)%an%C(red)%d %C(reset)%s'
 [ghq]
-  root = ~/.repos
+  root = ~/Repositories
 [include]
   path = ~/.gitconfig.local
