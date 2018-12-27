@@ -1,6 +1,6 @@
 module.exports = {
   config: {
-    updateChannel: 'canary',
+    // updateChannel: 'canary',
     fontSize: 14,
     fontFamily: '"Ricty Discord for Powerline", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
     cursorAccentColor: '#282a2d',
