@@ -17,6 +17,6 @@ set fish_color_autosuggestion brblack
 # set fish_color_user brgreen
 # set fish_color_host normal
 set fish_color_cancel -r
-set fish_color_valid_path --underline
+# set fish_color_valid_path --underline
 set fish_color_history_current --bold
 set fish_color_selection white --bold --background=brblack
