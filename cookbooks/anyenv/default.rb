@@ -1,19 +1,17 @@
+package 'anyenv'
+
+ANYENV_DEFINITION_ROOT = "#{ENV['HOME']}/.config/anyenv"
 ANYENV_ROOT = "#{ENV['HOME']}/.anyenv"
 
-[
-  {
-    path: ANYENV_ROOT,
-    repository: 'https://github.com/riywo/anyenv.git'
-  },
-  {
-    path: "#{ANYENV_ROOT}/plugins/anyenv-update",
-    repository: 'https://github.com/znz/anyenv-update.git'
-  }
-].each do |g|
-  git_pull g[:path] do
-    repository g[:repository]
-    user node[:user]
-  end
+execute 'initialize install manifest directory' do
+  command 'anyenv install --force-init'
+  user node[:user]
+  not_if "test -d #{ANYENV_DEFINITION_ROOT}"
+end
+
+git_pull "#{ANYENV_ROOT}/plugins/anyenv-update" do
+  repository 'https://github.com/znz/anyenv-update.git'
+  user node[:user]
 end
 
 %w(
@@ -22,10 +20,10 @@ end
 ).each do |env|
   execute "install #{env}" do
     command <<-EOF
-      #{ANYENV_ROOT}/bin/anyenv init -
-      #{ANYENV_ROOT}/bin/anyenv install #{env}
+      anyenv init -
+      anyenv install #{env}
     EOF
     user node[:user]
-    not_if %Q!test -d #{ANYENV_ROOT}/envs/#{env}!
+    not_if "test -d #{ENV['HOME']}/.anyenv/envs/#{env}"
   end
 end

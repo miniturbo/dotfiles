@@ -3,7 +3,7 @@ if status is-interactive
   test -d $HOME/.dotfiles; and _set_path $HOME/.dotfiles/bin
 
   # anyenv
-  test -d $HOME/.anyenv; and not type -q anyenv; and _anyenv_init
+  type -q anyenv; and builtin source (anyenv init - | psub)
 
   # direnv
   type -q direnv; and eval (direnv hook fish)
