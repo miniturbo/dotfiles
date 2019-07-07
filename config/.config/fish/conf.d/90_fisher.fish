@@ -1,8 +1,9 @@
-# pure
-set pure_color_gray (set_color brblack)
+# # pure
+# set pure_color_gray (set_color brblack)
 
 # ghq
 set -g GHQ_SELECTOR peco
+set -g GHQ_SELECTOR_OPTS '--prompt="ghq>"'
 
 # fisher
 set -g fisher_path $HOME/.config/fish/fisher

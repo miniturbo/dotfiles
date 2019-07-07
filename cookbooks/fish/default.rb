@@ -3,8 +3,8 @@ PATH = '/usr/local/bin/fish'
 package 'fish'
 
 dotfile '.config/fish/conf.d'
-dotfile '.config/fish/fishfile'
 dotfile '.config/fish/functions'
+dotfile '.config/fish/fisher/fishfile'
 
 execute 'install Fisher' do
   dest = '$HOME/.config/fish/fisher/functions/fisher.fish'
