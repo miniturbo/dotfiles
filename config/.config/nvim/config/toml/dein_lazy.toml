@@ -1,4 +1,12 @@
 [[plugins]]
+repo = 'dag/vim-fish'
+on_ft = 'fish'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
 repo = 'hail2u/vim-css3-syntax'
 on_ft = ['css', 'scss', 'vue']
 
@@ -15,13 +23,13 @@ repo = 'othree/es.next.syntax.vim'
 on_ft = ['javascript', 'vue']
 
 [[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = ['typescript', 'vue']
+
+[[plugins]]
+repo = 'digitaltoad/vim-pug'
+on_ft = ['pug', 'vue']
+
+[[plugins]]
 repo = 'posva/vim-vue'
 on_ft = 'vue'
-
-[[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
-
-[[plugins]]
-repo = 'dag/vim-fish'
-on_ft = 'fish'
