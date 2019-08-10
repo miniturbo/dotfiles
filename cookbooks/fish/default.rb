@@ -2,6 +2,10 @@ PATH = '/usr/local/bin/fish'
 
 package 'fish'
 
+directory "#{ENV['HOME']}/.config/fish/fisher" do
+  user node[:user]
+end
+
 dotfile '.config/fish/conf.d'
 dotfile '.config/fish/functions'
 dotfile '.config/fish/fisher/fishfile'
