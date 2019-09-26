@@ -2,7 +2,7 @@ packages =
   case node[:platform]
   when 'darwin'
     %w(libffi libyaml openssl)
-  else
+  when 'ubuntu'
     %w(
       autoconf
       bison

@@ -13,6 +13,16 @@ define :cask do
   end
 end
 
+define :add_apt_repository do
+  execute "add #{params[:name]} repository" do
+    command <<-EOF
+      add-apt-repository -y ppa:#{params[:name]}
+      apt update -y
+    EOF
+    not_if "apt-cache policy | grep #{params[:name]}"
+  end
+end
+
 define :git_pull, repository: nil do
   if run_command("test -d #{params[:name]}", error: false).exit_status != 0
     execute "git clone from #{params[:repository]} to #{params[:name]}" do
@@ -24,7 +34,7 @@ define :git_pull, repository: nil do
       cd #{params[:name]}
       local=$(git log -1 HEAD | head -1 | awk '{print $2}')
       remote=$(git ls-remote origin HEAD | head -1 | awk '{print $1}')
-      [[ "$local" = "$remote" ]]
+      [ "$local" = "$remote" ]
     EOF
     if run_command(cmd, error: false).exit_status != 0
       execute "git pull from #{params[:repository]} to #{params[:name]}" do

@@ -1,5 +1,6 @@
-PATH = '/usr/local/bin/fish'
+PATH = node[:platform] == 'darwin' ? '/usr/local/bin/fish' : '/usr/bin/fish'
 
+add_apt_repository 'fish-shell/release-3' if node[:platform] == 'ubuntu'
 package 'fish'
 
 directory "#{ENV['HOME']}/.config/fish/fisher" do
