@@ -33,18 +33,18 @@ hook_add = '''
 [[plugins]]
 repo = 'cocopon/lightline-hybrid.vim'
 
-[[plugins]]
-repo = 'dense-analysis/ale'
-hook_add = '''
-  let g:ale_fix_on_save = 2
-  let g:ale_fixers = ['eslint']
-  let g:ale_sign_column_always = 1
-  let g:ale_sign_error = '✖'
-  let g:ale_sign_warning = '⚠'
-
-  autocmd ColorScheme *
-    \ hi clear ALEErrorSign |
-    \ hi clear ALEWarningSign |
-    \ highlight ALEErrorSign ctermbg=NONE ctermfg=red |
-    \ highlight ALEWarningSign ctermbg=NONE ctermfg=yellow |
-'''
+#[[plugins]]
+#repo = 'dense-analysis/ale'
+#hook_add = '''
+#  let g:ale_fix_on_save = 2
+#  let g:ale_fixers = ['eslint']
+#  let g:ale_sign_column_always = 1
+#  let g:ale_sign_error = '✖'
+#  let g:ale_sign_warning = '⚠'
+#
+#  autocmd ColorScheme *
+#    \ hi clear ALEErrorSign |
+#    \ hi clear ALEWarningSign |
+#    \ highlight ALEErrorSign ctermbg=NONE ctermfg=red |
+#    \ highlight ALEWarningSign ctermbg=NONE ctermfg=yellow |
+#'''
