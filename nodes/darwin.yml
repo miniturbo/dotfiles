@@ -1,0 +1,10 @@
+cookbooks:
+  - homebrew
+  - xcode
+  - iterm2
+  - fish
+  - tmux
+  - neovim
+  - git
+  - anyenv
+  - ruby

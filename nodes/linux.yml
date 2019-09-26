@@ -1,0 +1,6 @@
+cookbooks:
+  - fish
+  - tmux
+  - neovim
+  - git
+  - anyenv
