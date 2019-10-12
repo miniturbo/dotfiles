@@ -1,5 +1,5 @@
-ANYENV_DEFINITION_ROOT = "#{ENV['HOME']}/.config/anyenv"
 ANYENV_ROOT = "#{ENV['HOME']}/.anyenv"
+ANYENV_DEFINITION_ROOT = "#{ENV['HOME']}/.config/anyenv"
 
 case node[:platform]
 when 'darwin'
@@ -12,7 +12,7 @@ else
 end
 
 execute 'initialize install manifest directory' do
-  command "#{ANYENV_ROOT}/bin/anyenv install --force-init"
+  command 'anyenv install --force-init'
   user node[:user]
   not_if "test -d #{ANYENV_DEFINITION_ROOT}"
 end
@@ -28,8 +28,9 @@ end
 ).each do |env|
   execute "install #{env}" do
     command <<-EOF
-      #{ANYENV_ROOT}/bin/anyenv init -
-      #{ANYENV_ROOT}/bin/anyenv install #{env}
+      export PATH="#{ANYENV_ROOT}/bin:$PATH"
+      anyenv init -
+      anyenv install #{env}
     EOF
     user node[:user]
     not_if "test -d #{ENV['HOME']}/.anyenv/envs/#{env}"
