@@ -1,4 +1,5 @@
 cookbooks:
+  - linuxbrew
   - fish
   - tmux
   - neovim

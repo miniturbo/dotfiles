@@ -2,6 +2,9 @@ if status is-interactive
   # dotfiles
   test -d $HOME/.dotfiles && _set_path $HOME/.dotfiles/bin
 
+  # linuxbrew
+  test -f /home/linuxbrew/.linuxbrew/bin/brew && eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
   # anyenv
   type -q anyenv && builtin source (anyenv init - | psub)
 
