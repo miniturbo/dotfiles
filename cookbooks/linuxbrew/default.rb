@@ -13,5 +13,5 @@ execute 'install' do
     brew install gcc
   EOF
   user node[:user]
-  not_if 'which brew'
+  not_if 'test -f /home/linuxbrew/.linuxbrew/bin/brew'
 end

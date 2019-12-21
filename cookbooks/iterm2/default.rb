@@ -3,7 +3,7 @@ execute 'add homebrew/cask-versions repository' do
   not_if 'env HOMEBREW_NO_AUTO_UPDATE=1 brew tap | grep -q homebrew/cask-versions'
 end
 
-cask 'iterm2-beta'
+brew_cask 'iterm2-beta'
 
 dotfile '.config/iterm2'
 

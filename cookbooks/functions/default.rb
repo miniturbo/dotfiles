@@ -6,10 +6,31 @@ define :dotfile, source: nil do
   end
 end
 
-define :cask do
+define :brew do
+  root_dir =
+    case node[:platform]
+    when 'darwin' '/usr/local'
+    else '/home/linuxbrew/.linuxbrew'
+    end
+
   execute "install #{params[:name]}" do
-    command "brew cask install #{params[:name]}"
-    not_if "ls -1 /usr/local/Caskroom/#{params[:name]}"
+    command "#{root_dir}/bin/brew install #{params[:name]}"
+    user node[:user]
+    not_if "ls -1 #{root_dir}/Cellar/#{params[:name]}"
+  end
+end
+
+define :brew_cask do
+  root_dir =
+    case node[:platform]
+    when 'darwin' then '/usr/local'
+    else '/home/linuxbrew/.linuxbrew'
+    end
+
+  execute "install #{params[:name]}" do
+    command "#{root_dir}/bin/brew cask install #{params[:name]}"
+    user node[:user]
+    not_if "ls -1 #{root_dir}/Caskroom/#{params[:name]}"
   end
 end
 

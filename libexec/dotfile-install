@@ -12,10 +12,12 @@ case $platform in
   "darwin")
     mitamae_bin="mitamae-x86_64-darwin"
     mitamae_command="${root_dir}/bin/mitamae"
+    echo $PATH
     ;;
   "linux")
     mitamae_bin="mitamae-x86_64-linux"
     mitamae_command="sudo -E ${root_dir}/bin/mitamae"
+    echo $PATH
     ;;
 esac
 

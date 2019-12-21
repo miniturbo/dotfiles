@@ -5,14 +5,15 @@ case node[:platform]
 when 'darwin'
   package 'anyenv'
 else
-  git_pull ANYENV_ROOT do
-    repository 'https://github.com/anyenv/anyenv.git'
-    user node[:user]
-  end
+  brew 'anyenv'
+  # git_pull ANYENV_ROOT do
+  #   repository 'https://github.com/anyenv/anyenv.git'
+  #   user node[:user]
+  # end
 end
 
 execute 'initialize install manifest directory' do
-  command 'anyenv install --force-init'
+  command 'env; anyenv install --force-init'
   user node[:user]
   not_if "test -d #{ANYENV_DEFINITION_ROOT}"
 end
