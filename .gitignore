@@ -1,4 +1,5 @@
 /bin/mitamae*
+/config/.config/git/*.local
 /config/.tmux/plugins
 /config/.zsh/**/*.zwc
 /config/.zsh/history

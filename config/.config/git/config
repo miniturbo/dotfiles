@@ -1,6 +1,5 @@
 [core]
   editor = vi
-  excludesFile = ~/.gitignore
   quotepath = false
 [fetch]
   prune = true
@@ -33,4 +32,4 @@
 [ghq]
   root = ~/Repositories
 [include]
-  path = ~/.gitconfig.local
+  path = config.local

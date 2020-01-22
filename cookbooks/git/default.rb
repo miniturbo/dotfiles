@@ -1,2 +1,1 @@
-dotfile '.gitconfig'
-dotfile '.gitignore'
+dotfile '.config/git'
