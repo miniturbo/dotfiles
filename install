@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -eu
+
+dotfile_dir="${HOME}/.dotfiles"
+branch=${1:-master}
+
+if [ -d $dotfile_dir ]; then
+  echo "dotfiles have been already installed to '${dotfile_dir}'."
+  exit 0
+fi
+
+# Install Command Line Tools for Xcode on macOS
+if [ "$(uname)" = 'Darwin' ] && [ ! -e '/Library/Developer/CommandLineTools/usr/bin/git' ]; then
+  placeholder='/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress'
+  sudo touch $placeholder
+
+  label=$(softwareupdate -l | grep 'Label: Command Line Tools' | sed -e 's/^\* *Label: //' | sort -V | tail -n 1)
+  sudo softwareupdate -i "$label"
+  sudo rm -f $placeholder
+  sudo xcode-select --switch /Library/Developer/CommandLineTools
+fi
+
+git clone -q -b $branch git@github.com:miniturbo/dotfiles.git $dotfile_dir
+
+PATH="${dotfile_dir}/bin:${PATH}"
+
+dotfile install

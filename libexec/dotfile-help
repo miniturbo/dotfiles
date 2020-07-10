@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -eu
+
+echo "Usage: dotfile <command> [<args>]"
+echo
+echo "Commands:"
+echo "  install          Install dotfiles"
+echo "  update           Update dotfiles"
+echo "  help             Display the help message"
+echo "  version          Display the version"
