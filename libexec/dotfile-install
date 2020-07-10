@@ -5,7 +5,7 @@ set -eu
 root_dir=$(cd "$(dirname $0)/.." && pwd)
 platform=$(uname | tr '[A-Z]' '[a-z]')
 
-mitamae_version="1.9.0"
+mitamae_version="1.11.7"
 mitamae_cache="mitamae-${mitamae_version}"
 
 case $platform in
