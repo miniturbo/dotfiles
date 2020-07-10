@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -eu
+
+root_dir=$(cd "$(dirname $0)/.." && pwd)
+
+cd $root_dir
+
+branch=$(git symbolic-ref --short HEAD)
+
+for opt in "$@"; do
+  case $opt in
+    -b | --branch)
+      branch=$2
+      ;;
+  esac
+done
+
+git fetch origin
+git reset --hard "origin/$branch"
+git gc
+
+dotfile-install
