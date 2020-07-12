@@ -3,3 +3,4 @@ cookbooks:
   - iterm2
   - fish
   - tmux
+  - neovim
