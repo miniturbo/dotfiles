@@ -2,3 +2,4 @@ cookbooks:
   - homebrew
   - iterm2
   - fish
+  - tmux
