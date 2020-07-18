@@ -6,3 +6,4 @@ cookbooks:
   - neovim
   - git
   - anyenv
+  - ruby
