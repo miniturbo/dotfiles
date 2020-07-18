@@ -5,3 +5,4 @@ cookbooks:
   - tmux
   - neovim
   - git
+  - anyenv
