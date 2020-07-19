@@ -7,3 +7,4 @@ cookbooks:
   - git
   - anyenv
   - ruby
+  - font
