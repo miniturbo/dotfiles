@@ -17,6 +17,9 @@ if status is-interactive
   # mysql@5.7
   test -d /usr/local/opt/mysql@5.7 && _set_path /usr/local/opt/mysql@5.7/bin
 
+  # imagemagick@6
+  test -d /usr/local/opt/imagemagick@6 && _set_path /usr/local/opt/imagemagick@6/bin
+
   # google-cloud-sdk
   if test -d /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk
     _set_path /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
