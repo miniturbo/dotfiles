@@ -6,6 +6,5 @@ cookbooks:
   - neovim
   - git
   - asdf
-  - anyenv
   - ruby
   - font
