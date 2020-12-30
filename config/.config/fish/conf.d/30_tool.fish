@@ -2,6 +2,9 @@ if status is-interactive
   # dotfiles
   test -d $HOME/.dotfiles && _set_path $HOME/.dotfiles/bin
 
+  # asdf
+  type -q asdf && builtin source (brew --prefix asdf)'/asdf.fish'
+
   # anyenv
   type -q anyenv && builtin source (anyenv init - | psub)
 
