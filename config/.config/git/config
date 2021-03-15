@@ -1,6 +1,8 @@
 [core]
   editor = vi
   quotepath = false
+[init]
+  defaultBranch = main
 [fetch]
   prune = true
 [pull]
