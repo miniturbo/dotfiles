@@ -1,4 +1,10 @@
-package 'neovim/neovim/neovim'
+package 'luajit' do
+  options '--HEAD'
+end
+
+package 'neovim' do
+  options '--HEAD'
+end
 
 dotfile '.config/nvim/autoload'
 dotfile '.config/nvim/config'
