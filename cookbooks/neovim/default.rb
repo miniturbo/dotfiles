@@ -10,6 +10,7 @@ dotfile '.config/nvim/autoload'
 dotfile '.config/nvim/config'
 dotfile '.config/nvim/ftdetect'
 dotfile '.config/nvim/init.vim'
+dotfile '.config/vscode/nvim/init.vim'
 
 execute 'install dein' do
   home = '$HOME/.local/share/dein'
