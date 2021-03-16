@@ -23,6 +23,6 @@ if status is-interactive
   # google-cloud-sdk
   if test -d /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk
     _set_path /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
-    set -x CLOUDSDK_PYTHON /usr/local/opt/python@3.8/libexec/bin/python
+    set -x CLOUDSDK_PYTHON /usr/local/opt/python@3.9/libexec/bin/python
   end
 end
