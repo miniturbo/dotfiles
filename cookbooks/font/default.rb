@@ -1,5 +1,5 @@
 execute 'install HackGen' do
-  url = 'https://github.com/yuru7/HackGen/releases/download/v2.0.0/HackGen_v2.0.0.zip'
+  url = 'https://github.com/yuru7/HackGen/releases/download/v2.4.1/HackGen_v2.4.1.zip'
   command <<-EOS
     curl -sL -o HackGen.zip #{url}
     unzip -j -d HackGen HackGen.zip
