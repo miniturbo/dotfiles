@@ -1,9 +1,6 @@
-# # pure
-# set pure_color_gray (set_color brblack)
-
-# ghq
+# decors/fish-ghq
 set -g GHQ_SELECTOR peco
 set -g GHQ_SELECTOR_OPTS '--prompt="ghq>"'
 
-# peco
+# oh-my-fish/plugin-peco
 bind \cr 'peco_select_history (commandline -b)'
