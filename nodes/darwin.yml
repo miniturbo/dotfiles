@@ -5,6 +5,7 @@ cookbooks:
   - tmux
   - neovim
   - git
+  - direnv
   - asdf
   - ruby
   - font
