@@ -29,6 +29,10 @@
   su    = submodule update
   tr    = log --date=short --graph --abbrev-commit \
           --pretty='format:%C(yellow)%h %C(green)%cd %C(blue)%an%C(red)%d %C(reset)%s'
+[pager]
+  log = diff-highlight | less
+  show = diff-highlight | less
+  diff = diff-highlight | less
 [ghq]
   root = ~/Repositories
 [include]
