@@ -2,5 +2,6 @@
 .vscode
 /.envrc
 /.ruby-version
+/.tool-versions
 /.solargraph.yml
 /rails.rb
