@@ -4,4 +4,4 @@
 /.ruby-version
 /.tool-versions
 /.solargraph.yml
-/rails.rb
+/solargraph.rb
