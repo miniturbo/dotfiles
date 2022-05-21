@@ -7,6 +7,7 @@
 ].each { |name| package name }
 
 %w[
+  golang
   nodejs
   ruby
 ].each do |name|
