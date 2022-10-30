@@ -13,7 +13,7 @@
 ].each do |name|
   execute "add #{name} plugin" do
     command <<-COMMANDS
-      . $(brew --prefix asdf)/asdf.sh
+      . $(brew --prefix asdf)/libexec/asdf.sh
       asdf plugin add #{name}
     COMMANDS
     user node[:user]
