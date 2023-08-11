@@ -14,9 +14,6 @@ if status is-interactive
   # tmux
   type -q tmux && test -n "$TMUX" && _tmux_auto_rename_session
 
-  # mysql@5.7
-  test -d /usr/local/opt/mysql@5.7 && _set_path /usr/local/opt/mysql@5.7/bin
-
   # imagemagick@6
   test -d /usr/local/opt/imagemagick@6 && _set_path /usr/local/opt/imagemagick@6/bin
   test -d /opt/homebrew/opt/imagemagick@6 && _set_path /opt/homebrew/opt/imagemagick@6/bin
