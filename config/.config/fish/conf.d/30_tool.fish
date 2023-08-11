@@ -19,9 +19,11 @@ if status is-interactive
 
   # imagemagick@6
   test -d /usr/local/opt/imagemagick@6 && _set_path /usr/local/opt/imagemagick@6/bin
+  test -d /opt/homebrew/opt/imagemagick@6 && _set_path /opt/homebrew/opt/imagemagick@6/bin
 
   # diff-highlight
   test -d /usr/local/share/git-core/contrib/diff-highlight && _set_path /usr/local/share/git-core/contrib/diff-highlight
+  test -d /opt/homebrew/share/git-core/contrib/diff-highlight && _set_path /opt/homebrew/share/git-core/contrib/diff-highlight
 
   # google-cloud-sdk
   if test -d /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk

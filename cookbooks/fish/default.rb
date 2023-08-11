@@ -1,4 +1,8 @@
-fish_path = '/usr/local/bin/fish'
+fish_path =
+  case `uname -m`.strip
+  when 'arm64' then '/opt/homebrew/bin/fish'
+  else '/usr/local/bin/fish'
+  end
 
 package 'fish'
 

@@ -4,14 +4,23 @@ set -eu
 
 root_dir=$(cd "$(dirname $0)/.." && pwd)
 platform=$(uname | tr '[A-Z]' '[a-z]')
+arch=$(uname -m)
 
 mitamae_version="1.14.0"
 mitamae_cache="mitamae-${mitamae_version}"
 
 case $platform in
   "darwin")
-    mitamae_bin="mitamae-x86_64-darwin"
-    mitamae_command="${root_dir}/bin/mitamae"
+    case $arch in
+      "x86_64")
+        mitamae_bin="mitamae-x86_64-darwin"
+        mitamae_command="${root_dir}/bin/mitamae"
+        ;;
+      "arm64")
+        mitamae_bin="mitamae-aarch64-darwin"
+        mitamae_command="${root_dir}/bin/mitamae"
+        ;;
+    esac
     ;;
   "linux")
     mitamae_bin="mitamae-x86_64-linux"

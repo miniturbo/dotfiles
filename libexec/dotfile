@@ -5,7 +5,7 @@ set -e
 root_dir=$(cd "$(dirname $0)/.." && pwd)
 command="$1"
 
-PATH="${root_dir}/libexec:${PATH}"
+PATH="${root_dir}/libexec:/opt/homebrew/bin:${PATH}"
 
 case $command in
   -h | --help | '')
