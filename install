@@ -21,7 +21,7 @@ if [ "$(uname)" = 'Darwin' ] && [ ! -e '/Library/Developer/CommandLineTools/usr/
   sudo xcode-select --switch /Library/Developer/CommandLineTools
 fi
 
-git clone -q -b $branch git@github.com:miniturbo/dotfiles.git $dotfile_dir
+git clone -q -b $branch https://github.com/miniturbo/dotfiles.git $dotfile_dir
 
 PATH="${dotfile_dir}/bin:${PATH}"
 
