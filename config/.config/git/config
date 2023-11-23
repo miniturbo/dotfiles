@@ -13,7 +13,7 @@
   alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t --> \\2/' | sed -E 's/ +/ /g' | sort
   br    = branch
   brd   = branch -d
-  brda  = !git branch --merged | grep -vE '^\\*|master|develop$' | xargs -I % git branch -d %
+  brda  = !git branch --merged | grep -vE '^\\*|main|master|develop$' | xargs -I % git branch -d %
   brm   = branch -m
   brr   = branch -r
   ci    = commit

@@ -3,7 +3,7 @@
 set -eu
 
 dotfile_dir="${HOME}/.dotfiles"
-branch=${1:-master}
+branch=${1:-main}
 
 if [ -d $dotfile_dir ]; then
   echo "dotfiles have been already installed to '${dotfile_dir}'."
