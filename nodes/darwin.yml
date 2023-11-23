@@ -3,6 +3,7 @@ cookbooks:
   - iterm2
   - fish
   - starship
+  - sheldon
   - tmux
   - neovim
   - git
