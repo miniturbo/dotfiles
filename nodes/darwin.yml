@@ -2,6 +2,7 @@ cookbooks:
   - homebrew
   - iterm2
   - fish
+  - starship
   - tmux
   - neovim
   - git
