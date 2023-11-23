@@ -1,7 +1,7 @@
 cookbooks:
   - homebrew
   - iterm2
-  - fish
+  - zsh
   - starship
   - sheldon
   - tmux
