@@ -8,6 +8,6 @@ cookbooks:
   - neovim
   - git
   - tools
-  - rtx
+  - mise
   - ruby
   - font

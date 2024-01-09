@@ -22,8 +22,8 @@ fi
 # Homebrew
 [[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv | grep -v 'export PATH=')"
 
-# rtx
-type rtx > /dev/null && eval "$(rtx activate zsh)"
+# mise-en-place
+type mise > /dev/null && eval "$(mise activate zsh)"
 
 # Starship
 type starship > /dev/null && eval "$(starship init zsh)"

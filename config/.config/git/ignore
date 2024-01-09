@@ -1,7 +1,7 @@
 .DS_Store
 .vscode
 /.envrc
-/.rtx.toml
+/.mise.toml
 /.ruby-version
 /.solargraph.yml
 /.tool-versions
