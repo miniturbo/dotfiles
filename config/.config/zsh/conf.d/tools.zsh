@@ -13,6 +13,12 @@ if type fzf > /dev/null; then
   export RUNEWIDTH_EASTASIAN=0
 fi
 
+# Google Cloud SDK
+if test -d "$(brew --prefix)/share/google-cloud-sdk"; then
+  source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+  source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+fi
+
 # Homebrew
 [[ -f /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv | grep -v 'export PATH=')"
 
