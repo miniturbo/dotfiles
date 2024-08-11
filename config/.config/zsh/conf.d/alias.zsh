@@ -15,8 +15,8 @@ esac
 # gls
 type gls > /dev/null && alias ls='gls -F --color=auto --group-directories-first'
 
-# exa
-type exa > /dev/null && alias ls='exa --icons --group-directories-first'
+# eza
+type eza > /dev/null && alias ls='eza --icons --group-directories-first'
 
 # bat
 type bat > /dev/null && alias cat='bat'
