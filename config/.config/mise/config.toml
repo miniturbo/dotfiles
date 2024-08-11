@@ -1,5 +1,5 @@
 [tools]
-golang = '1.21'
+golang = '1.22'
 node = 'lts'
 python = '3.12'
-ruby = '3.2'
+ruby = '3.3'
