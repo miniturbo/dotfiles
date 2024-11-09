@@ -1,0 +1,5 @@
+[tools]
+golang = '1'
+node = 'lts'
+python = '3'
+ruby = '3'

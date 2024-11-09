@@ -1,0 +1,8 @@
+.DS_Store
+.vscode
+/.envrc
+/.mise.toml
+/.ruby-version
+/.solargraph.yml
+/.tool-versions
+/solargraph.rb

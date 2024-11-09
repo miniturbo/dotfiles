@@ -1,0 +1,83 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+
+set -eu
+
+if [ ! -e '/Library/Developer/CommandLineTools/usr/bin/git' ]; then
+  echo "⚙️ Installing Command Line Tools"
+
+  placeholder='/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress'
+  sudo touch $placeholder
+  label=$(softwareupdate -l | grep 'Label: Command Line Tools' | sed -e 's/^\* *Label: //' | sort -V | tail -n 1)
+  sudo softwareupdate -i "$label"
+  sudo rm -f $placeholder
+  sudo xcode-select --switch /Library/Developer/CommandLineTools
+fi
+
+if ! type brew &> /dev/null; then
+  echo "⚙️ Installing Homebrew"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+echo "⚙️ Exporting Homebrew environment variables"
+eval $(/opt/homebrew/bin/brew shellenv)
+
+echo "⚙️ Installing formulas"
+brew bundle --no-lock --file=/dev/stdin <<EOF
+brew 'autoconf'
+brew 'bat'
+brew 'coreutils'
+brew 'delta'
+brew 'direnv'
+brew 'eza'
+brew 'fzf'
+brew 'ghq'
+brew 'git'
+brew 'gmp'
+brew 'libyaml'
+brew 'mise'
+brew 'neovim'
+brew 'openssl@3'
+brew 'readline'
+brew 'ripgrep'
+brew 'sheldon'
+brew 'starship'
+brew 'tmux'
+brew 'tree'
+brew 'xh'
+brew 'zsh'
+
+cask 'font-hackgen'
+cask 'font-hackgen-nerd'
+cask 'iterm2'
+EOF
+
+zsh_path=$(brew --prefix)/bin/zsh
+
+if ! grep -q $zsh_path /etc/shells; then
+  echo "⚙️ Adding zsh path to /etc/shells"
+  echo $zsh_path | sudo tee -a /etc/shells > /dev/null
+fi
+
+if [ "$SHELL" != $zsh_path ]; then
+  echo "⚙️ Changing default shell to zsh"
+  sudo chsh -s $zsh_path $USER
+fi
+
+if ! defaults read com.googlecode.iterm2.plist PrefsCustomFolder &> /dev/null; then
+  echo "⚙️ Setting iterm2 custom config folder"
+  defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string '~/.config/iterm2'
+  killall cfprefsd
+fi
+
+if ! defaults read com.googlecode.iterm2.plist LoadPrefsFromCustomFolder &> /dev/null; then
+  echo "⚙️ Setting to read from custom configuration folder for iterm2"
+  defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+  killall cfprefsd
+fi
+
+if [ ! -d .local/share/dein ]; then
+  echo "⚙️ Installing Dein"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/installer.sh)"
+fi
+{{ end -}}
