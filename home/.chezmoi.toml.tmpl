@@ -1,0 +1,10 @@
+{{- $git_name := promptStringOnce . "name" "Enter git user name" -}}
+{{- $git_email := promptStringOnce . "email" "Enter git user email address" -}}
+{{- $ghq_root := promptStringOnce . "~/Repositories" "Enter ghq root path" -}}
+
+[data.git]
+name = {{ $git_name | quote }}
+email = {{ $git_email | quote }}
+
+[data.ghq]
+root = {{ $ghq_root | quote }}

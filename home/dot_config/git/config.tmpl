@@ -1,0 +1,54 @@
+[alias]
+  alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t --> \\2/' | sed -E 's/ +/ /g' | sort
+  br    = branch
+  brd   = branch -d
+  brda  = !git branch --merged | grep -vE '^\\*|main|master|develop$' | xargs -I % git branch -d %
+  brm   = branch -m
+  brr   = branch -r
+  ci    = commit
+  co    = checkout
+  cob   = checkout -b
+  dc    = diff --cached
+  df    = diff
+  l     = log --date=short --no-merges \
+          --pretty='format:%C(yellow)%h %C(green)%cd %C(blue)%an%C(red)%d %C(reset)%s'
+  st    = status --branch --short
+  tr    = log --date=short --graph --abbrev-commit \
+          --pretty='format:%C(yellow)%h %C(green)%cd %C(blue)%an%C(red)%d %C(reset)%s'
+
+[core]
+  editor = vim
+  pager = delta
+  quotepath = false
+
+[delta]
+  navigate = true
+  syntax-theme = OneHalfDark
+
+[diff]
+  colorMoved = default
+
+[fetch]
+  prune = true
+
+[ghq]
+  root = ~/.local/src/repos
+
+[include]
+  path = config.local
+
+[init]
+  defaultBranch = main
+
+[interactive]
+  diffFilter = delta --color-only
+
+[merge]
+  conflictstyle = zdiff3
+
+[pull]
+  rebase = true
+
+[user]
+  name = {{ .git.name }}
+  email = {{ .git.email }}
