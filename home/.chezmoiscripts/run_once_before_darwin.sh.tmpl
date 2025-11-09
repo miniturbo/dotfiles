@@ -23,7 +23,7 @@ echo "⚙️ Exporting Homebrew environment variables"
 eval $(/opt/homebrew/bin/brew shellenv)
 
 echo "⚙️ Installing formulas"
-brew bundle --no-lock --file=/dev/stdin <<EOF
+brew bundle --file=/dev/stdin <<EOF
 brew 'autoconf'
 brew 'bat'
 brew 'coreutils'
