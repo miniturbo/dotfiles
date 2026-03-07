@@ -47,9 +47,10 @@ brew 'tree'
 brew 'xh'
 brew 'zsh'
 
-cask 'font-hackgen'
-cask 'font-hackgen-nerd'
-cask 'iterm2'
+cask 'font-udev-gothic'
+cask 'font-udev-gothic-hs'
+cask 'font-udev-gothic-nf'
+cask 'ghostty'
 EOF
 
 zsh_path=$(brew --prefix)/bin/zsh
@@ -62,18 +63,6 @@ fi
 if [ "$SHELL" != $zsh_path ]; then
   echo "⚙️ Changing default shell to zsh"
   sudo chsh -s $zsh_path $USER
-fi
-
-if ! defaults read com.googlecode.iterm2.plist PrefsCustomFolder &> /dev/null; then
-  echo "⚙️ Setting iterm2 custom config folder"
-  defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string '~/.config/iterm2'
-  killall cfprefsd
-fi
-
-if ! defaults read com.googlecode.iterm2.plist LoadPrefsFromCustomFolder &> /dev/null; then
-  echo "⚙️ Setting to read from custom configuration folder for iterm2"
-  defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
-  killall cfprefsd
 fi
 
 if [ ! -d .local/share/dein ]; then
