@@ -1,0 +1,22 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'haya14busa/dein-command.vim'
+
+[[plugins]]
+repo = 'jlanzarotta/bufexplorer'
+hook_add = '''
+  let g:bufExplorerShowRelativePath=1
+'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = 'call marble#lightline#init()'
+
+[[plugins]]
+repo = 'joshdick/onedark.vim'
+hook_add = '''
+  set termguicolors
+  colorscheme onedark
+'''

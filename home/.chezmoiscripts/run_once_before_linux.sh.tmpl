@@ -1,0 +1,71 @@
+{{- if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+
+set -eu
+
+if ! type brew &> /dev/null; then
+  echo "⚙️ Installing Homebrew"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+echo "⚙️ Exporting Homebrew environment variables"
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+echo "⚙️ Installing packages"
+sudo apt-get update -y
+sudo apt-get install -y \
+  autoconf \
+  build-essential \
+  libdb-dev \
+  libffi-dev \
+  libgdbm-dev \
+  libgdbm6 \
+  libgmp-dev \
+  libncurses5-dev \
+  libreadline6-dev \
+  libssl-dev \
+  libyaml-dev \
+  patch \
+  rustc \
+  uuid-dev \
+  zlib1g-dev
+
+echo "⚙️ Installing formulas"
+brew bundle --file=/dev/stdin <<EOF
+brew 'bat'
+brew 'coreutils'
+brew 'delta'
+brew 'direnv'
+brew 'eza'
+brew 'fzf'
+brew 'gcc'
+brew 'ghq'
+brew 'git'
+brew 'mise'
+brew 'neovim'
+brew 'ripgrep'
+brew 'sheldon'
+brew 'starship'
+brew 'tmux'
+brew 'tree'
+brew 'xh'
+brew 'zsh'
+EOF
+
+zsh_path=$(brew --prefix)/bin/zsh
+
+if ! grep -q $zsh_path /etc/shells; then
+  echo "⚙️ Adding zsh path to /etc/shells"
+  echo $zsh_path | sudo tee -a /etc/shells > /dev/null
+fi
+
+if [ "$SHELL" != $zsh_path ]; then
+  echo "⚙️ Changing default shell to zsh"
+  sudo chsh -s $zsh_path $USER
+fi
+
+if [ ! -d .local/share/dein ]; then
+  echo "⚙️ Installing Dein"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/installer.sh)"
+fi
+{{ end -}}

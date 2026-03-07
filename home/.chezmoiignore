@@ -1,0 +1,13 @@
+.cache
+.config/chezmoi
+.config/iterm2
+.dotnet
+.local
+.motd_shown
+.sudo_as_admin_successful
+.vscode-*
+.wget-hsts
+
+{{ if eq .chezmoi.os "darwin" }}
+!.config/iterm2/com.googlecode.iterm2.plist
+{{ end }}
