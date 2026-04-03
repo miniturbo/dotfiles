@@ -48,6 +48,7 @@ brew 'sheldon'
 brew 'starship'
 brew 'tmux'
 brew 'tree'
+brew 'tree-sitter-cli'
 brew 'xh'
 brew 'zsh'
 EOF
@@ -62,10 +63,5 @@ fi
 if [ "$SHELL" != $zsh_path ]; then
   echo "⚙️ Changing default shell to zsh"
   sudo chsh -s $zsh_path $USER
-fi
-
-if [ ! -d .local/share/dein ]; then
-  echo "⚙️ Installing Dein"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/Shougo/dein-installer.vim/master/installer.sh)"
 fi
 {{ end -}}
