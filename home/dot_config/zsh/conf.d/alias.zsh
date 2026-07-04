@@ -27,9 +27,6 @@ type delta &> /dev/null && alias diff='delta'
 # Neovim
 type nvim &> /dev/null && alias vim='nvim'
 
-# tmux + direnv
-type tmux &> /dev/null && type direnv &> /dev/null && alias tmux='direnv exec / tmux'
-
 # OpenSSH client with WSL
 type ssh.exe &> /dev/null && alias ssh='ssh.exe'
 type ssh-add.exe &> /dev/null && alias ssh-add='ssh-add.exe'

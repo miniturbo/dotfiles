@@ -1,0 +1,17 @@
+onboarding = false
+
+[keys]
+prefix = "ctrl+a"
+
+[theme]
+ame = "terminal"
+auto_switch = true
+
+[ui]
+prompt_new_tab_name = false
+
+[ui.toast]
+delivery = "system"
+
+[ui.sound]
+enabled = false
